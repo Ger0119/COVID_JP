@@ -2,7 +2,7 @@
 ## 情報源：[NHK](https://www3.nhk.or.jp/news/special/coronavirus/)
 
 ## 説明
-1.Webスクレイピングでロロナ情報を取得
+1.Webスクレイピングでコロナ情報を取得
 
 2.pandasでデータをロードして選択
 
