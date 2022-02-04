@@ -27,6 +27,7 @@ manage.pyを実行してコマンドで制御する。
 |:---|:---|
 |[info]  | 設定値を確認|
 |[load]  | データをロード|
+|[update]| データを更新|
 |[range] | 日付範囲を設定 |
 |[target]| 日付を設定 |
 |[line]  | line graph  を作成|

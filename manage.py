@@ -75,12 +75,18 @@ class Manager(object):
         mk_linegraph(self.DataFrame1, self.start, self.end)
 
     def map(self):
-        data = self.DataFrame2.groupby("都道府県名").apply(lambda x: x.loc[self.target, :])
-        mk_map(self.target, data.iloc[:, 2:])
+        try:
+            data = self.DataFrame2.groupby("都道府県名").apply(lambda x: x.loc[self.target, :])
+            mk_map(self.target, data.iloc[:, 2:])
+        except KeyError:
+            print(f'{self.target}のデータはないです。')
 
     def donut(self):
-        data = self.DataFrame2.groupby("都道府県名").apply(lambda x: x.loc[self.target, :])
-        mk_donut(self.target, data.iloc[:, 2:])
+        try:
+            data = self.DataFrame2.groupby("都道府県名").apply(lambda x: x.loc[self.target, :])
+            mk_donut(self.target, data.iloc[:, 2:])
+        except KeyError:
+            print(f'{self.target}のデータはないです。')
 
     @staticmethod
     def check_time():
@@ -116,7 +122,7 @@ class Manager(object):
     def get_target(self):
         print(f"Target 日付を入力してください。Default['{self.target}'] : ", end="")
         target = self.get_date()
-        self.target = target if target else self.target
+        self.target = target if self.check_date(target) else self.target
 
     def get_date(self):
         while True:
@@ -143,6 +149,7 @@ class Manager(object):
     def help():
         print("""Command>>   [info]   設定値を確認
             [load]   データをロード
+            [update] データを更新
             [range]  日付範囲を設定
             [target] 日付を設定
             [line]   line graph  を作成
