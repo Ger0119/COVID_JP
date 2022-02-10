@@ -56,14 +56,14 @@ def get_url(url, pat):
 def get_urls(url, pat, base):
     res = request(url)
     data = pat.findall(res)
-    with open("Data/url.csv", "w+") as f:
+    with open("Data/url.csv", "w+", encoding='utf-8') as f:
         for (x, y) in data:
             f.write(f'{y},{base[:-1]}{x},\n')
 
 
 def get_target_url(target):
     url = ""
-    with open("Data/url.csv") as f:
+    with open("Data/url.csv", encoding='utf-8') as f:
         for x in f.readlines():
             data = x.split(',')
             if data[0] == target:
